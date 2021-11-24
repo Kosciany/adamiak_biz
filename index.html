@@ -15,6 +15,11 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <link href="bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/kidp_logo_blue_no_text.svg">
+  <style>
+    navbar-toogler:before{
+      content: "Menu nawigacyjne";
+    }
+  </style>
 </head>
 
 <body>
@@ -22,16 +27,15 @@
   <nav class="navbar navbar-expand-lg navbar-light border-bottom border-3">
     <div class="container-xxl">
       <a class="navbar-brand overflow-hidden" href="#">
-        <img src="/assets/kidp_logo_blue_no_text.svg" alt="" width="30" height="24"
+        <img src="assets/kidp_logo_blue_no_text.svg" alt="" width="30" height="24"
           class="d-inline-block align-text-top">
-        <span class="text-black-50">Doradca Podatkowy Zbigniew Adamiak</span>
+
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
         aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+      <div class="collapse navbar-collapse justify-content-start align-center" id="main-nav">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" href="#home">Strona główna</a>
@@ -54,7 +58,21 @@
   </nav>
 
   <div class="container-lg my-5">
-    <h2 id="home" class="text-center mb-2 pb-2 border-bottom"> Witamy na stronie </h2>
+    <div class="row">
+      <div class="d-sm-none d-md-block col-md-6 mb-2">
+        <img src="assets/kidp_logo_blue_no_text.svg" alt="" class="img-fluid">
+    </div>
+      <div class="col-12 col-md-6 mb-2 d-flex flex-column justify-content-center">
+        <h1> Doradcta Podatkowy Zbigniew Adamiak </h1>
+        <p>Jesteśmy kancelarią podatkową działającą od 1995 roku. Jeżeli z jakichkolwiek względów chcesz ustawić barierę między Sobą a fiskusem, poświęć chwilę naszej stronie.</p>
+        <div><a class="btn btn-primary" role="button" href="#home" >Strona główna</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container-lg my-5">
+    <h2 id="home" class="text-center mb-2 pb-2 border-bottom"> Strona główna </h2>
     <div class="row">
 
       <div class="col-sm-12 col-md-4 mb-2 d-flex flex-column">
@@ -193,9 +211,11 @@
   </div>
   <div class="container">
     <div class="row justify-content-around align-content-center">
-      <div class="col-3"></div>
-      <div class="col-3">
-        <button class="btn btn-info shadow btn-sm" type="button" data-bs-toggle="offcanvas"
+      <div class="col-sm-6 col-md-3 d-flex align-items-center justify-content-center">
+        <a href="https://lodzki.kidp.pl/main.php?m=doradca&id=3087" class="btn btn-link">Wpis na stronie KIDP Łódź</a>
+      </div>
+      <div class="col-sm-6 col-md-3 d-flex align-items-center justify-content-center">
+        <button class="btn btn-link" type="button" data-bs-toggle="offcanvas"
           data-bs-target="#privacyPolicy" aria-controls="privacyPolicy">Polityka Prywatności</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="privacyPolicy" aria-labelledby="privacyPolicyLabel">
           <div class="offcanvas-header">
@@ -230,15 +250,13 @@
                 mogą
                 posiadać własne polityki dotyczące prywatności oraz regulaminy, z którymi zalecamy się zapoznać.</li>
               <p>W razie wątpliwości co któregokolwiek z zapisów niniejszej polityki prywatności jesteśmy do dyspozycji
-                -
-                nasze dane znaleźć można w zakładce - <em>Kontakt</em>.</p>
+                - nasze dane znaleźć można w zakładce - <em>Kontakt</em>.</p>
             </ol>
           </div>
         </div>
       </div>
-      <div class="col-1"></div>
-      <div class="col-3">
-        <button class="btn btn-info shadow btn-sm" type="button" data-bs-toggle="offcanvas"
+      <div class="col-sm-6 col-md-3 d-flex align-items-center justify-content-center">
+        <button class="btn btn-link" type="button" data-bs-toggle="offcanvas"
           data-bs-target="#cookiePolicy" aria-controls="cookiePolicy">Polityka Cookies</button>
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="cookiePolicy" aria-labelledby="cookiePolicyLabel">
           <div class="offcanvas-header">
@@ -265,12 +283,14 @@
           </div>
         </div>
       </div>
-      <div class="col-2"></div>
+      
     </div>
     <footer class="container border-top my-3">
+
       <p class="text-center text-muted">&copy; Copyright 2021, Karol Adamiak <a
           href="mailto:karol.adamiak@adamiak.biz">karol.adamiak@adamiak.biz</a></p>
-    </footer>
+
+  </footer>
     <!--
       Pixabay images author: https://pixabay.com/pl/users/mohamed_hassan-5229782/
     -->
