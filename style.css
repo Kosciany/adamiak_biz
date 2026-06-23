@@ -11,3 +11,114 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
+
+/* Główny kontener - musi mieć position: relative, aby zatrzymać nakładkę w środku */
+.map-widget {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* Zbliżona szerokość do tej z systemu KRS */
+  overflow: hidden;
+  font-family: var(--bs-body-font-family);
+  border: 1px solid #e0e0e0; /* Delikatna ramka naokoło całości */
+}
+
+.map-address,
+.map-button {
+  font-family: var(--bs-body-font-family);
+}
+
+/* Obrazek mapy wypełnia kontener */
+.map-bg {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Biały kafelek nałożony na mapę */
+.map-overlay {
+  position: absolute;
+  bottom: 15px; /* Odstęp od dołu */
+  left: 50%;
+  transform: translateX(-50%); /* Idealne wyśrodkowanie w poziomie */
+  width: 90%; /* Zostawia trochę widocznej mapy po bokach */
+  text-align: center;
+  z-index: 2;
+}
+
+/* Pinezka nad adresem */
+.map-pin {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background-color: #0b3d91;
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  margin: 0;
+  z-index: 3;
+}
+
+.map-pin::after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  top: 17px;
+  left: 17px;
+}
+
+/* Tekst adresu */
+.map-address {
+  padding: 8px 10px 12px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  color: #8b0000; /* Ciemnoczerwony/bordowy kolor ze screena */
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.map-street {
+  color: #000000;
+}
+
+.map-city {
+  color: #000000;
+}
+
+.footer-link-btn {
+  border-radius: 0.5rem;
+  margin: 0.2rem 0;
+  padding: 0.35rem 0.6rem;
+}
+
+/* Przycisk dopasowany do kolorystyki strony (Bootstrap blue) */
+.map-button {
+  display: block;
+  background-color: #0d6efd;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 6px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Reakcja na najechanie myszką */
+.map-button:hover {
+  color: #ffffff;
+  background-color: #0b5ed7;
+}
+
+.map-button:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.45);
+}
