@@ -1,3 +1,48 @@
+:root {
+  --brand: #0b3162;       /* niebieski z logo KIDP */
+  --brand-dark: #08254a;  /* ciemniejszy odcień na hover/active */
+}
+
+/* ===== Kolor marki (niebieski z logo) dla przycisków i linków ===== */
+.btn-primary {
+  background-color: var(--brand);
+  border-color: var(--brand);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:disabled {
+  background-color: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+.btn-outline-primary {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.btn-primary:focus,
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(11, 49, 98, 0.4);
+}
+
+.btn-link,
+a {
+  color: var(--brand);
+}
+
+.btn-link:hover,
+a:hover {
+  color: var(--brand-dark);
+}
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -53,7 +98,7 @@ html {
   left: 50%;
   width: 60px;
   height: 60px;
-  background-color: #0b3d91;
+  background-color: var(--brand);
   border-radius: 50% 50% 50% 0;
   transform: translate(-50%, -50%) rotate(-45deg);
   margin: 0;
@@ -100,7 +145,7 @@ html {
 /* Przycisk dopasowany do kolorystyki strony (Bootstrap blue) */
 .map-button {
   display: block;
-  background-color: #0d6efd;
+  background-color: var(--brand);
   color: #ffffff;
   text-decoration: none;
   margin-top: 6px;
@@ -108,14 +153,14 @@ html {
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+  box-shadow: 0 2px 8px rgba(11, 49, 98, 0.3);
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Reakcja na najechanie myszką */
 .map-button:hover {
   color: #ffffff;
-  background-color: #0b5ed7;
+  background-color: var(--brand-dark);
 }
 
 .map-button:focus-visible {
@@ -129,7 +174,7 @@ html {
   left: -999px;
   top: 0;
   z-index: 1080;
-  background: #0b3d91;
+  background: var(--brand);
   color: #fff;
   padding: 0.6rem 1rem;
   border-radius: 0 0 0.5rem 0;
@@ -145,7 +190,7 @@ a:focus-visible,
 .btn:focus-visible,
 .nav-link:focus-visible,
 .navbar-toggler:focus-visible {
-  outline: 3px solid #0b3d91;
+  outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
 
@@ -175,7 +220,7 @@ a:focus-visible,
   width: 1.3rem;
   height: 1.3rem;
   background: center / contain no-repeat
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230d6efd'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230b3162'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
 }
 
 .check-list li:hover {
@@ -195,7 +240,7 @@ a:focus-visible,
   padding: 1rem 1rem 1rem 3.1rem;
   background: #f8faff;
   border: 1px solid #e6eefc;
-  border-left: 4px solid #0d6efd;
+  border-left: 4px solid var(--brand);
   border-radius: 0.6rem;
 }
 
@@ -211,5 +256,5 @@ a:focus-visible,
   width: 1.4rem;
   height: 1.4rem;
   background: center / contain no-repeat
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230d6efd'%3E%3Cpath d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230b3162'%3E%3Cpath d='M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
 }
