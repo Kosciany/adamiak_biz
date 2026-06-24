@@ -10,6 +10,16 @@
       "problemMatcher": [],
       "presentation": { "reveal": "always", "panel": "shared", "clear": true },
       "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "prod-local-compare (pixel diff)",
+      "detail": "Porównuje www.adamiak.biz z lokalnym index.html i zapisuje *_diff.png",
+      "type": "shell",
+      "command": "bash compare-prod-local.sh && xdg-open screenshots/compare 2>/dev/null",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "group": "build"
     }
   ]
 }

@@ -34,7 +34,7 @@ jobs:
 
       - name: Remove files not needed in production
         run: |
-          rm -rf .git .github .vscode README.md screenshots.sh .gitignore node_modules package*.json
+          rm -rf .git .github .vscode README.md screenshots.sh compare-prod-local.sh screenshots .gitignore svgo.config.js node_modules package*.json
           # Zostaw tylko realnie używane pliki Bootstrapa (reszta to ~7 MB śmieci)
           find bootstrap-5.1.3-dist -type f \
             ! -name 'bootstrap.min.css' ! -name 'bootstrap.bundle.min.js' -delete
