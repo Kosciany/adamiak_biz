@@ -9,18 +9,47 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository code
-      uses: actions/checkout@v4
+      - name: Checkout repository code
+        uses: actions/checkout@v4
 
-    - name: Remove obsolete files
-      run: rm -rf .git .github README.md
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Upload files via SCP/SSH
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        key: ${{ secrets.FTP_PRIVATE_KEY }}
-        port: 22
-        source: "."
-        target: "www"
+      # Kod w repo zostaje czytelny — minifikacja odbywa się tylko tutaj, przed wysyłką.
+      - name: Minify HTML, CSS and SVG
+        run: |
+          npx --yes html-minifier-terser@7 \
+            --collapse-whitespace --remove-comments \
+            --remove-redundant-attributes --use-short-doctype \
+            --minify-css true \
+            -o index.tmp.html index.html
+          mv index.tmp.html index.html
+
+          npx --yes csso-cli@4 style.css --output style.tmp.css
+          mv style.tmp.css style.css
+
+          npx --yes svgo@3 --quiet --multipass -f assets
+
+      - name: Remove files not needed in production
+        run: |
+          rm -rf .git .github .vscode README.md screenshots.sh .gitignore node_modules package*.json
+          # Zostaw tylko realnie używane pliki Bootstrapa (reszta to ~7 MB śmieci)
+          find bootstrap-5.1.3-dist -type f \
+            ! -name 'bootstrap.min.css' ! -name 'bootstrap.bundle.min.js' -delete
+          find bootstrap-5.1.3-dist -type d -empty -delete
+          # Oryginały rastrowe nie idą na serwer — wysyłamy wersje .webp
+          rm -f mapa.png assets/*.png assets/*.jpg
+          # Nieużywane warianty logotypu
+          find assets -name '*.svg' ! -name 'kidp_logo_blue_no_text.svg' -delete
+
+      - name: Upload files via SCP/SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          key: ${{ secrets.FTP_PRIVATE_KEY }}
+          port: 22
+          source: "."
+          target: "www"

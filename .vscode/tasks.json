@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Zrzuty ekranu (responsywność)",
+      "detail": "Generuje zrzuty mobile/tablet/desktop do screenshots/ i otwiera katalog",
+      "type": "shell",
+      "command": "bash screenshots.sh && xdg-open screenshots 2>/dev/null",
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "group": { "kind": "build", "isDefault": true }
+    }
+  ]
+}

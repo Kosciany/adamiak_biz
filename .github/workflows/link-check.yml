@@ -1,0 +1,46 @@
+name: Sprawdzanie linków
+
+on:
+  schedule:
+    # 1. i 15. dnia każdego miesiąca o 09:00 UTC (co ~2 tygodnie)
+    - cron: '0 9 1,15 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  kidp:
+    name: Wpis KIDP (krytyczny)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sprawdź link do wpisu KIDP
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Tylko link kidp.pl; 2xx/3xx = OK, 4xx/5xx = błąd (zerwany wpis)
+          args: --no-progress --include kidp.pl --accept 200..=399 --max-retries 3 index.html
+          fail: true
+
+  pozostale:
+    name: Pozostałe linki + mapa (miękko)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sprawdź pozostałe linki
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Mapa Google bywa wrażliwa na boty → 403/429 traktujemy jako OK
+          args: --no-progress --exclude kidp.pl --exclude-mail --accept 200..=399,403,429 --max-retries 3 index.html
+          fail: false
+          format: markdown
+          output: ./lychee-report.md
+      - name: Zgłoś problem jako Issue (ostrzeżenie)
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "🔗 Wykryto problem z linkami na stronie"
+          content-filepath: ./lychee-report.md
+          labels: linki, automatyczne
