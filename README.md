@@ -32,6 +32,10 @@ bash screenshots.sh        # wymaga Chromium; wynik w screenshots/ (ignorowany p
 W VS Code to samo odpalisz zadaniem **„Zrzuty ekranu (responsywność)"**
 (menu Terminal → Run Task, albo skrót `Ctrl+Shift+B`).
 
+Po deployu możesz porównać produkcję z lokalną wersją pixel-to-pixel —
+zadanie **„prod-local-compare (pixel diff)"** lub `bash compare-prod-local.sh`
+(zapisuje `*_diff.png` w `screenshots/compare/`; czerwone obszary = różnice).
+
 ## Deploy
 
 Automatyczny przy każdym `push` na gałąź `master`. Workflow `deploy.yml`:

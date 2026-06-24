@@ -24,7 +24,7 @@ shot() { # nazwa szerokość wysokość
   # puste w headless (brak realnego scrolla). To dotyczy tylko zrzutów, nie strony.
   "$CHROME" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
     --disable-features=LazyImageLoading,LazyFrameLoading \
-    --force-device-scale-factor=1 --virtual-time-budget=6000 \
+    --force-device-scale-factor=1 --virtual-time-budget=15000 \
     --window-size="$2,$3" --screenshot="$OUT/$1.png" "$URL" >/dev/null 2>&1
   echo "  $OUT/$1.png  (${2}x${3})"
 }

@@ -22,7 +22,7 @@ mkdir -p "$OUT"
 shoot() { # url plik szer wys
   "$CHROME" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
     --disable-features=LazyImageLoading,LazyFrameLoading \
-    --force-device-scale-factor=1 --virtual-time-budget=8000 \
+    --force-device-scale-factor=1 --virtual-time-budget=15000 \
     --window-size="$3,$4" --screenshot="$2" "$1" >/dev/null 2>&1
 }
 
